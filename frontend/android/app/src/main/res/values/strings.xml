@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Santu Hardware</string>
+    <string name="title_activity_main">Santu Hardware</string>
+    <string name="package_name">in.santuhardware.pos</string>
+    <string name="custom_url_scheme">in.santuhardware.pos</string>
+</resources>
