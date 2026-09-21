@@ -1,0 +1,623 @@
+/*
+ * Home / Dashboard — values from Vyapar
+ * dashboardPage-UIComponent_jsx_Dashboard_Dashboard_tsx.css
+ * Layout: padding/gap 4px, left 68% / right 32%, leftTop 18%,
+ * leftMid calc(62% - 9px), leftBottom 20%. Radius 4px throughout.
+ */
+body[data-route="santu-dashboard"] .page-head,
+.santu-dash-page .page-head {
+	display: none !important;
+}
+body[data-route="santu-dashboard"] .page-content {
+	margin-top: 0;
+}
+/* page-body carries a 16px top padding that the 100vh math below does not
+   know about, so the dashboard rendered 16px too tall and its last row got
+   clipped off the bottom of the window. Drop it here and the height is exact. */
+body[data-route="santu-dashboard"] .page-body,
+.santu-dash-page .page-body {
+	padding-top: 0;
+}
+
+.santu-dash {
+	height: calc(100vh - 56px);
+	padding: 12px;
+	background: #f1f5f9;
+	box-sizing: border-box;
+	overflow: hidden;
+}
+
+.santu-dash-loading,
+.santu-dash-error {
+	text-align: center;
+	padding: 64px 16px;
+	color: #64748b;
+	font-weight: 500;
+}
+.santu-dash-error { color: #ef4444; }
+
+.santu-dash-layout {
+	display: flex;
+	gap: 12px;
+	width: 100%;
+	height: 100%;
+	align-items: stretch;
+}
+
+.santu-dash-main {
+	width: 68%;
+	min-width: 0;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	padding: 0;
+}
+
+.santu-dash-widgets {
+	width: 32%;
+	min-width: 0;
+	height: 100%;
+	position: static;
+}
+
+.santu-dash-vy-row {
+	display: flex;
+	gap: 12px;
+	height: 18%;
+	min-height: 110px;
+	margin: 0;
+}
+
+.santu-dash-vy-card {
+	flex: 1 1 50%;
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	padding: 20px;
+	border-radius: 12px;
+	border: 1px solid #e2e8f0;
+	background: #ffffff;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+
+.santu-dash-vy-row-single {
+	height: auto;
+	min-height: 0;
+	flex-shrink: 0;
+}
+.santu-dash-vy-row-single .santu-dash-vy-card {
+	width: 100%;
+	padding: 20px 24px;
+	justify-content: flex-start;
+}
+.santu-dash-vy-row-single .santu-dash-vy-card-amount {
+	font-size: 28px;
+	padding: 8px 0 0;
+}
+.santu-dash-vy-row-single .santu-dash-vy-card-sub {
+	margin-top: 8px;
+}
+.santu-dash-vy-card:hover { 
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+	transform: translateY(-2px);
+}
+
+.santu-dash-vy-card-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+.santu-dash-vy-card-label {
+	color: #64748b;
+	font-size: 15px;
+	font-weight: 500;
+	line-height: normal;
+	margin-bottom: 0;
+}
+.santu-dash-vy-card-amount {
+	color: #0f172a;
+	padding: 10px 0;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: normal;
+	margin-bottom: 0;
+	letter-spacing: -0.5px;
+}
+.santu-dash-vy-card-sub {
+	color: #94a3b8;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: normal;
+}
+.santu-dash-vy-card-sub b,
+.santu-dash-party-count-num {
+	font-weight: 600;
+	color: #334155;
+}
+
+.santu-dash-vy-card-icon {
+	width: 40px;
+	height: 40px;
+	min-width: 40px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 16px;
+}
+.santu-dash-vy-card-icon.santu-tone-good {
+	background: #def7ee;
+	color: #08bd7c;
+}
+.santu-dash-vy-card-icon.santu-tone-warning {
+	background: #ffe5e8;
+	color: #f45972;
+}
+
+.santu-dash-vy-chart-card {
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	padding: 24px 24px 16px;
+	margin-bottom: 0;
+	flex: 1;
+	min-height: 0;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+.santu-dash-vy-chart-card .santu-dash-chart {
+	border: none;
+	padding: 0;
+	margin-top: 12px;
+	flex: 1;
+	min-height: 0;
+	background: transparent;
+}
+
+.santu-dash-vy-chart-head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	flex-shrink: 0;
+}
+.santu-dash-vy-chart-card .santu-dash-section-title {
+	color: #64748b;
+	font-size: 15px;
+	font-weight: 500;
+	margin-bottom: 12px;
+}
+.santu-dash-vy-chart-amount-row {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.santu-dash-vy-chart-amount {
+	color: #0f172a;
+	font-size: 24px;
+	font-weight: 700;
+	line-height: normal;
+	letter-spacing: -0.5px;
+}
+.santu-dash-vy-chart-pct {
+	font-size: 14px;
+	font-weight: 500;
+	padding: 4px 10px;
+	border-radius: 20px;
+}
+.santu-dash-vy-chart-pct b { font-weight: 600; }
+.santu-dash-vy-chart-pct.is-up { color: #059669; background: #d1fae5; }
+.santu-dash-vy-chart-pct.is-down { color: #e11d48; background: #ffe4e6; }
+.santu-dash-vy-chart-pct.is-same { color: #64748b; background: #f1f5f9; }
+
+.santu-dash-vy-chart-dropdown { position: relative; }
+.santu-dash-vy-chart-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	border: 1px solid #e2e8f0;
+	cursor: pointer;
+	padding: 8px 14px;
+	border-radius: 50px;
+	background: #ffffff;
+	color: #475569;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 18px;
+	white-space: nowrap;
+	font-family: inherit;
+	transition: all 0.2s;
+}
+.santu-dash-vy-chart-badge:hover {
+	background: #f8fafc;
+	border-color: #cbd5e1;
+}
+.santu-dash-vy-chart-menu {
+	position: absolute;
+	top: calc(100% + 8px);
+	right: 0;
+	z-index: 20;
+	min-width: 180px;
+	background: #fff;
+	border: 1px solid #e2e8f0;
+	border-radius: 10px;
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+	padding: 8px 0;
+}
+.santu-dash-vy-chart-menu-item {
+	padding: 10px 16px;
+	font-size: 14px;
+	font-weight: 500;
+	color: #334155;
+	cursor: pointer;
+	transition: background 0.15s;
+}
+.santu-dash-vy-chart-menu-item:hover { background: #f1f5f9; color: #0f172a; }
+
+.santu-dash-reports-section {
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	height: 20%;
+	min-height: 120px;
+	padding: 20px 24px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 16px;
+	box-sizing: border-box;
+	margin-bottom: 0;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+.santu-dash-section-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 0;
+}
+.santu-dash-section-title {
+	color: #0f172a;
+	font-weight: 600;
+	font-size: 16px;
+	line-height: 1.3;
+	margin-bottom: 0;
+}
+.santu-dash-section-kicker {
+	color: #64748b;
+	font-weight: 500;
+	font-size: 14px;
+	letter-spacing: 0;
+	text-transform: none;
+	margin-bottom: 0;
+}
+.santu-dash-view-all {
+	border: none;
+	background: #fff;
+	color: #2563eb;
+	font-weight: 600;
+	font-size: 14px;
+	cursor: pointer;
+	padding: 6px 12px;
+	border-radius: 6px;
+	transition: background 0.2s;
+}
+.santu-dash-view-all:hover {
+	background: #eff6ff;
+}
+.santu-dash-reports-row {
+	display: flex;
+	justify-content: space-between;
+	height: 70px;
+	min-height: 57px;
+	gap: 12px;
+}
+.santu-dash-report-card {
+	width: 23.5%;
+	flex: 1 1 23.5%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px 20px;
+	border-radius: 10px;
+	border: 1px solid #e2e8f0;
+	background: #f8fafc;
+	font-weight: 600;
+	font-size: 14px;
+	color: #334155;
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
+}
+.santu-dash-report-card:hover {
+	border-color: #bae6fd;
+	background: #f0f9ff;
+	color: #0369a1;
+	transform: translateY(-2px);
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+.santu-dash-report-arrow {
+	color: #94a3b8;
+	font-size: 20px;
+	line-height: 1;
+	transition: color 0.2s;
+}
+.santu-dash-report-card:hover .santu-dash-report-arrow {
+	color: #0ea5e9;
+}
+
+.santu-dash-chart-empty {
+	text-align: center;
+	padding: 48px 16px;
+	color: #71748e;
+	font-size: 14px;
+}
+
+.santu-dash-widget-rail {
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	height: 100%;
+	min-height: 0;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+.santu-dash-widget-list {
+	flex: 1;
+	padding: 0;
+	overflow: auto;
+}
+.santu-dash-widget-empty {
+	height: 100%;
+	min-height: 240px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	gap: 16px;
+	padding: 32px 24px;
+	color: #0f172a;
+	font-weight: 600;
+	font-size: 16px;
+}
+.santu-dash-widget-empty-sub {
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 1.5;
+	color: #64748b;
+	max-width: 260px;
+	margin: 0 !important;
+}
+.santu-dash-widget-empty p { margin: 0; }
+
+.santu-dash-w-card {
+	position: relative;
+	border-bottom: 1px solid #e2e8f0;
+	padding: 24px 20px;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	transition: background 0.2s;
+}
+.santu-dash-w-card:hover { background: #f8fafc; }
+.santu-dash-w-top {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 8px;
+	/* The remove (x) button is absolutely positioned over this row's right end,
+	   so the row has to keep clear of it -- without this the period text ran
+	   straight underneath it ("As of No[x]" on the Low Stocks widget). Width of
+	   the button plus a gap. */
+	padding-right: 30px;
+}
+.santu-dash-w-title {
+	font-size: 15px;
+	font-weight: 500;
+	color: #475569;
+	margin-bottom: 0;
+	/* Of the two, the period is the short fixed label and the title is the
+	   long one, so when the row runs out of room the title is what gives --
+	   otherwise a period like "This Financial Year" broke onto a second line. */
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.santu-dash-w-period {
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 18px;
+	color: #94a3b8;
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+.santu-dash-w-value {
+	font-size: 20px;
+	font-weight: 700;
+	color: #0f172a;
+	line-height: normal;
+}
+/* Low-stock widget: a number and two chips, not a link to go and find out
+   (2026-09-05). The chips reuse the Items screen's critical red so the same
+   fact looks the same wherever it appears. */
+.santu-dash-w-unit {
+	font-size: 13px;
+	font-weight: 600;
+	color: #64748b;
+}
+.santu-dash-w-subline {
+	margin-top: 6px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+}
+.santu-dash-w-chip {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 999px;
+	font-size: 11px;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+}
+.santu-dash-w-chip.is-critical {
+	background: #fee2e2;
+	color: #b91c1c;
+}
+.santu-dash-w-chip.is-out {
+	background: #e2e8f0;
+	color: #334155;
+}
+
+.santu-dash-w-remove {
+	position: absolute;
+	right: 16px;
+	top: 20px;
+	border: none;
+	background: none;
+	color: #94a3b8;
+	font-size: 20px;
+	cursor: pointer;
+	line-height: 1;
+	transition: color 0.2s;
+}
+.santu-dash-w-remove:hover { color: #ef4444; }
+
+.santu-dash-add-widget,
+.santu-dash-picker-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	border: none;
+	border-top: 1px solid #e2e8f0;
+	background: #f8fafc;
+	color: #0f172a;
+	font-weight: 600;
+	font-size: 15px;
+	padding: 16px 20px;
+	cursor: pointer;
+	transition: background 0.2s;
+}
+.santu-dash-add-widget:hover { background: #f1f5f9; color: #2563eb; }
+.santu-dash-add-plus {
+	font-size: 24px;
+	font-weight: 400;
+	color: #3b82f6;
+}
+
+.santu-dash-picker-inrail { min-height: 0; height: 100%; }
+.santu-dash-picker-list { overflow-y: auto; flex: 1; }
+.santu-dash-picker-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 24px 20px;
+	border-bottom: 1px solid #e2e8f0;
+	background: #fff;
+	transition: background 0.15s;
+}
+.santu-dash-picker-row:hover { background: #f8fafc; }
+.santu-dash-picker-title {
+	font-size: 15px;
+	font-weight: 500;
+	color: #475569;
+}
+.santu-dash-picker-value {
+	font-size: 20px;
+	font-weight: 700;
+	color: #0f172a;
+}
+.santu-dash-picker-add {
+	width: 40px;
+	height: 40px;
+	border: none;
+	background: #f1f5f9;
+	border-radius: 8px;
+	color: #2563eb;
+	font-size: 24px;
+	line-height: 1;
+	cursor: pointer;
+	transition: all 0.2s;
+}
+.santu-dash-picker-add:hover { background: #e2e8f0; color: #1d4ed8; }
+.santu-dash-picker-add.is-added {
+	width: auto;
+	background: #d1fae5;
+	color: #059669;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 8px 12px;
+}
+.santu-dash-sale-link { cursor: pointer; }
+.santu-dash-picker-close {
+	border: none;
+	background: none;
+	font-size: 18px;
+	cursor: pointer;
+	color: #3f4155;
+}
+
+@media (max-width: 980px) {
+	.santu-dash { height: auto; overflow: auto; }
+	.santu-dash-layout { flex-direction: column; height: auto; }
+	.santu-dash-main, .santu-dash-widgets { width: 100%; height: auto; }
+	.santu-dash-vy-row, .santu-dash-vy-chart-card, .santu-dash-reports-section {
+		height: auto;
+	}
+	.santu-dash-vy-chart-card { min-height: 280px; }
+	.santu-dash-widget-rail { min-height: 380px; }
+}
+@media (max-width: 800px) {
+	.santu-dash-vy-row { flex-direction: column; }
+	.santu-dash-vy-card { width: 100%; }
+	.santu-dash-reports-row { flex-wrap: wrap; height: auto; }
+	.santu-dash-report-card { width: 100%; flex: 1 1 100%; }
+}
+
+/* Short windows (2026-08-29: reported as cards overlapping — Most Used
+   Reports sitting on top of the sale chart). The dashboard is normally one
+   locked 100vh screen with no scrolling, but frappe-charts draws its SVG at
+   a fixed height: once the window is short enough that the chart no longer
+   fits its flex slot, the SVG spills out and the section below paints over
+   it. Two guards: clip the chart to its own box, and below ~700px tall stop
+   forcing the whole dashboard into the viewport — let it scroll instead. */
+.santu-dash-chart {
+	overflow: hidden;
+}
+
+@media (max-height: 700px) {
+	.santu-dash {
+		height: auto;
+		min-height: calc(100vh - 56px);
+		overflow: auto;
+	}
+	.santu-dash-layout {
+		height: auto;
+		align-items: flex-start;
+	}
+	.santu-dash-main,
+	.santu-dash-widgets {
+		height: auto;
+	}
+	.santu-dash-vy-chart-card {
+		height: auto;
+		min-height: 300px;
+	}
+	.santu-dash-reports-section {
+		height: auto;
+	}
+	.santu-dash-widget-rail {
+		min-height: 340px;
+	}
+}

@@ -1,0 +1,32 @@
+node_modules/
+dist/
+build/
+.env
+.env.local
+.env.*.local
+*.log
+.DS_Store
+coverage/
+.vercel
+.turbo
+playwright-report/
+test-results/
+.pgdata/
+
+# WhatsApp linked-device session. These files ARE the logged-in WhatsApp
+# account: anyone holding them can read and send as the shop's number.
+whatsapp_bridge/auth/
+whatsapp_bridge/status.json
+
+# Local database backups (contain real business data)
+backups/
+
+# Build artifacts & temp files
+*.tsbuildinfo
+.claude/
+.idea/
+.vscode/
+*.jpeg
+*.jpg
+manojkhata.pdf
+

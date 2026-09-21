@@ -1,0 +1,23 @@
+/*
+ * Bridge for the stylesheets carried over from the old Frappe-based app.
+ *
+ * Those files were written against Frappe's desk variables. Nothing else of
+ * Frappe came across, so the handful of variables they actually read are
+ * redefined here against this app's own palette. Without this the rules
+ * still apply but colours and sizes fall back to the browser defaults.
+ */
+:root {
+  --font-stack: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --text-color: #0f172a;
+  --border-color: #e2e8f0;
+  --gray-100: #f1f5f9;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --text-sm: 13px;
+  --text-base: 14px;
+  --text-md: 15px;
+  --text-lg: 16px;
+  --text-xl: 18px;
+  /* Frappe sized its pages against the desk chrome; here the shell is ours. */
+  --full-height: 100%;
+}

@@ -1,0 +1,121 @@
+/*
+ * Print rules for invoices.
+ *
+ * The page size has to be decided before the print dialog opens, and @page
+ * cannot read a React prop — so the format is carried as a data attribute on
+ * <html> (set by usePrintFormat) and each size has its own rule.
+ *
+ * On iPad this feeds the AirPrint sheet; on desktop the same dialog offers
+ * "Save as PDF", which is how invoices are downloaded.
+ */
+
+@media print {
+  /* Nothing but the invoice itself reaches the paper. */
+  .no-print,
+  .toast-viewport {
+    display: none !important;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /*
+   * Hide the app frame but keep the printable region.
+   *
+   * visibility (not display) is what makes this work: the printable node is
+   * nested deep inside the shell, so hiding ancestors with display:none would
+   * take it down too. visibility:hidden is inherited but can be turned back on
+   * by a descendant, which is exactly what we need — and Safari on iPad
+   * honours it, unlike :has()-based selectors on older versions.
+   */
+  body * {
+    visibility: hidden;
+  }
+
+  .print-root,
+  .print-root *,
+  .printable,
+  .printable * {
+    visibility: visible;
+  }
+
+  /* Lift the invoice to the top-left of the sheet, out of the app layout. */
+  .print-root,
+  .printable {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0 !important;
+    width: 100%;
+  }
+
+  /* A nested .printable inside .print-root must not be lifted twice. */
+  .print-root .printable {
+    position: static;
+  }
+
+  .printable {
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+}
+
+/* ---------- A4 ---------- */
+@media print {
+  html[data-print-format='A4'] .printable {
+    width: 100%;
+    max-width: none;
+    padding: 0;
+  }
+}
+
+/* The @page size itself cannot be scoped by an attribute selector, so
+ * usePrintFormat injects the correct `@page { size: ... }` rule at print time.
+ * Everything below only styles the content for each format. */
+
+/* ---------- 80 mm thermal ---------- */
+@media print {
+  html[data-print-format='THERMAL_80'] .thermal-receipt {
+    width: 72mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 9pt;
+  }
+}
+
+/* ---------- 58 mm thermal ---------- */
+@media print {
+  html[data-print-format='THERMAL_58'] .thermal-receipt {
+    width: 50mm !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 8pt;
+  }
+}
+
+/*
+ * FitToScreen shrinks the invoice for the screen only. Paper always gets it at
+ * full size, so the scale, the fixed height and the scroll box all reset here.
+ */
+@media print {
+  .fit-screen,
+  .fit-screen-box,
+  .fit-screen-inner {
+    height: auto !important;
+    overflow: visible !important;
+    transform: none !important;
+    width: 100% !important;
+    display: block !important;
+  }
+}
+
+/* A zoomed preview is only a screen aid: paper always gets the bill at full size. */
+@media print {
+  .print-root [data-zoom-outer] { width: auto !important; height: auto !important; }
+  .print-root [data-zoom-inner] { width: auto !important; transform: none !important; }
+  .print-root .overflow-auto { overflow: visible !important; max-height: none !important; border: 0 !important; }
+}

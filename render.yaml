@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: santu-hardware-api
+    runtime: node
+    plan: starter
+    rootDir: backend
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_SSL
+        value: 'true'
+      - key: DATABASE_URL
+        fromDatabase:
+          name: santu-hardware-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGIN
+        sync: false # set to the Vercel URL, e.g. https://santu-hardware.vercel.app
+
+databases:
+  - name: santu-hardware-db
+    plan: basic-256mb
+    databaseName: santu_hardware
+    user: santu

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+  <!-- Monogram SH with Tools -->
+  <g fill="#000000">
+    <!-- Big Stylized S -->
+    <path d="M 130 30 C 100 30 85 45 85 70 C 85 105 155 95 155 125 C 155 140 140 150 120 150 C 95 150 85 135 85 135 L 70 155 C 70 155 88 175 120 175 C 160 175 180 155 180 125 C 180 88 110 98 110 70 C 110 58 120 52 135 52 C 155 52 168 62 168 62 L 180 40 C 180 40 160 30 130 30 Z" />
+    
+    <!-- Big Stylized H with Wrench and Brush accents -->
+    <rect x="210" y="30" width="26" height="145" rx="4" />
+    <rect x="280" y="30" width="26" height="145" rx="4" />
+    <rect x="210" y="90" width="96" height="26" rx="2" />
+
+    <!-- Paint Roller on top right -->
+    <rect x="270" y="10" width="46" height="15" rx="3" />
+    <path d="M 293 25 L 293 35" stroke="#000" stroke-width="6" />
+
+    <!-- Wrench head on left -->
+    <circle cx="160" cy="140" r="14" fill="none" stroke="#000" stroke-width="8" />
+  </g>
+
+  <!-- SANTU Wordmark -->
+  <text x="200" y="200" font-family="'Arial Black', Impact, sans-serif" font-weight="900" font-size="34" text-anchor="middle" letter-spacing="4" fill="#000">
+    SANTU
+  </text>
+
+  <!-- HARDWARE Wordmark with rules -->
+  <line x1="30" y1="216" x2="110" y2="216" stroke="#000" stroke-width="3" />
+  <text x="200" y="222" font-family="'Arial Black', Impact, sans-serif" font-weight="900" font-size="17" text-anchor="middle" letter-spacing="6" fill="#000">
+    HARDWARE
+  </text>
+  <line x1="290" y1="216" x2="370" y2="216" stroke="#000" stroke-width="3" />
+</svg>

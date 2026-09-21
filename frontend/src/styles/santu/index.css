@@ -1,0 +1,16 @@
+/*
+ * Stylesheets carried over from the shop's earlier Frappe-based app, kept as
+ * they were written so the screens ported into this app keep the same look.
+ * Only the Frappe desk variables they read had to be supplied (_compat.css).
+ * Just the stylesheets for screens still built on them are kept — Home,
+ * Parties, Purchase, Reports and Utilities; the rest of the old app's CSS
+ * belonged to screens that were redesigned or never built.
+ */
+@import './_compat.css';
+@import './design_system.css';
+@import './_additions.css';
+@import './santu_dashboard.css';
+@import './santu_parties.css';
+@import './santu_purchase.css';
+@import './santu_reports.css';
+@import './santu_utilities.css';

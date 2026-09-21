@@ -1,0 +1,185 @@
+/*
+ * The few classes the ported screens need that the old stylesheets never had.
+ *
+ * The Frappe screens loaded a whole list at once, so neither of them had a
+ * pager. Everything else on these screens is styled by the files beside this
+ * one; keep additions here rather than editing those, so the originals stay
+ * comparable with the old app.
+ */
+
+.santu-sale-txn-footer,
+.santu-stock-pager {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 10px 16px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.santu-sale-txn-footer {
+  justify-content: space-between;
+  border-top: 1px solid #e2e8f0;
+}
+
+.santu-sale-txn-footer div {
+  display: flex;
+  gap: 8px;
+}
+
+.santu-sale-txn-footer button:disabled,
+.santu-stock-pager button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/*
+ * Home sized itself against the Frappe desk chrome (`100vh - 56px`). Here the
+ * page already sits inside the app shell's own scrolling main area, so it
+ * fills that instead — otherwise the widget rail was cut off at the bottom.
+ */
+.santu-dash {
+  height: 100%;
+  min-height: 560px;
+}
+
+/* The rail is one card list with a border, the way the old screen drew it. */
+.santu-dash-widget-rail {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 100%;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.santu-dash-w-card:last-child {
+  border-bottom: none;
+}
+
+/*
+ * The old composer's send button was a 40px circle, because the bridge sent
+ * the message itself. Here the button hands the message to WhatsApp, so it
+ * says so and needs room for the words.
+ */
+.santu-wa-composer .wa-send-btn {
+  border-radius: 20px;
+  width: auto;
+  height: auto;
+  min-height: 40px;
+  padding: 8px 16px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.santu-wa-composer textarea.form-control {
+  border-radius: 18px;
+  resize: vertical;
+}
+
+/* Sits under the composer as a plain note, not centred like the empty state. */
+.santu-wa-chat-panel > .santu-wa-empty-footer {
+  justify-content: flex-start;
+  gap: 6px;
+  padding: 0 16px 10px;
+  background: #f0f2f5;
+}
+
+/* Parties: the count beside the header, and the "show more" row. */
+.santu-parties-count {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.santu-parties-more-load {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-top: 1px solid #e9edef;
+  background: #f8fafc;
+  color: #2563eb;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.santu-parties-more-load:hover { background: #f1f5f9; }
+.santu-parties-more-load:disabled { color: #94a3b8; cursor: default; }
+
+.santu-parties-bills-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.santu-parties-bills-table th {
+  text-align: left;
+  padding: 10px 12px;
+  color: #64748b;
+  font-weight: 600;
+  border-bottom: 1px solid #e9edef;
+  white-space: nowrap;
+}
+.santu-parties-bills-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #f1f5f9;
+  color: #0f172a;
+}
+.santu-parties-bills-table tbody tr { cursor: pointer; }
+.santu-parties-bills-table tbody tr:hover { background: #f8fafc; }
+.santu-parties-bills-table .num { text-align: right; }
+
+/*
+ * Sale pager. The buttons used to borrow the 36px square icon-button class,
+ * so "‹ Previous" and "Next ›" wrapped onto two lines and overlapped.
+ */
+.santu-sale-pager {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.santu-sale-pager-btn {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #334155;
+  font-size: 13px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.santu-sale-pager-btn:hover:not(:disabled) { background: #f8fafc; }
+.santu-sale-pager-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.santu-sale-pager-page {
+  min-width: 48px;
+  text-align: center;
+  color: #64748b;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Sale pager: text buttons, not the 36px square icon buttons they borrowed. */
+.santu-sale-pager { display: flex; align-items: center; gap: 8px; }
+.santu-sale-pager-btn {
+  padding: 6px 12px; border: 1px solid #e2e8f0; border-radius: 8px;
+  background: #fff; color: #334155; font-size: 13px; font-weight: 600;
+  white-space: nowrap; cursor: pointer;
+}
+.santu-sale-pager-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.santu-sale-pager-page { color: #64748b; font-size: 13px; }
+
+/*
+ * An invoice number or a date broken across two lines ("INV-" / "01019") is
+ * hard to read and doubled every row's height. They never wrap; the party
+ * column, which has the room, takes up the slack instead.
+ */
+.santu-sale-txn-table td:first-child,
+.santu-sale-inv-no,
+.santu-sale-txn-table td.num {
+  white-space: nowrap;
+}
+.santu-sale-party-cell {
+  min-width: 160px;
+}

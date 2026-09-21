@@ -1,0 +1,564 @@
+/*
+ * Purchase & Expense — Vyapar-inspired compact dashboard
+ */
+
+.santu-purchase-page-main {
+	padding: 0 !important;
+}
+
+.santu-purchase {
+	max-width: 100%;
+	margin: 0;
+	padding: 12px 20px 24px;
+	font-family: inherit;
+	color: #1f2937;
+}
+
+/* ---------- Page header ---------- */
+.santu-purchase-page-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 10px;
+	min-height: 36px;
+	flex-wrap: wrap;
+}
+
+.santu-purchase-page-title {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.santu-purchase-title-text {
+	font-size: 20px;
+	font-weight: 700;
+	color: #111827;
+}
+
+.santu-purchase-title-chevron {
+	font-size: 11px;
+	color: #9ca3af;
+}
+
+.santu-purchase-header-actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-wrap: wrap;
+}
+
+.santu-purchase-add-btn {
+	font-weight: 600 !important;
+	font-size: 14px !important;
+	padding: 8px 20px !important;
+	border-radius: 8px !important;
+	background: var(--santu-brand, #3b82f6) !important;
+	border-color: var(--santu-brand, #3b82f6) !important;
+	color: #fff !important;
+	white-space: nowrap;
+}
+
+.santu-purchase-upload-wrap {
+	position: relative;
+}
+
+.santu-purchase-upload-btn {
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	padding: 8px 16px !important;
+	border-radius: 8px !important;
+	border-color: var(--santu-brand, #3b82f6) !important;
+	color: var(--santu-brand, #3b82f6) !important;
+	background: #fff !important;
+}
+
+.santu-purchase-upload-menu {
+	position: absolute;
+	top: 100%;
+	right: 0;
+	margin-top: 8px;
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+	z-index: 100;
+	min-width: 180px;
+	overflow: hidden;
+}
+.santu-purchase-upload-menu button {
+	display: block;
+	width: 100%;
+	padding: 10px 14px;
+	border: none;
+	background: transparent;
+	text-align: left;
+	font-size: 14px;
+	cursor: pointer;
+}
+.santu-purchase-upload-menu button:hover {
+	background: #f3f4f6;
+}
+
+/* ---------- Filter bar ---------- */
+.santu-purchase-filter-bar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 12px;
+	padding: 12px 16px;
+	margin-bottom: 12px;
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.santu-purchase-between-label {
+	font-size: 14px;
+	color: #6b7280;
+}
+
+.santu-purchase-pill {
+	appearance: none;
+	font-size: 14px;
+	font-weight: 500;
+	color: #374151;
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: 6px;
+	padding: 5px 10px;
+	height: 32px;
+	cursor: pointer;
+	outline: none;
+}
+.santu-purchase-pill:hover {
+	border-color: #d1d5db;
+	background: #f3f4f6;
+}
+
+select.santu-purchase-pill {
+	padding-right: 26px;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%236b7280' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 8px center;
+	background-color: #f9fafb;
+	min-width: 110px;
+}
+
+/* "This Month ▾" — the period dropdown reads as the primary filter in the
+   reference, styled darker/heavier than the plain white pills next to it. */
+.santu-purchase-period {
+	background-color: #374151 !important;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23ffffff' d='M1 1l4 4 4-4'/%3E%3C/svg%3E") !important;
+	color: #fff !important;
+	border-color: #374151 !important;
+	font-weight: 600;
+}
+
+.santu-purchase-date-range {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	flex-wrap: wrap;
+	background: #f9fafb;
+	border: 1px solid #e5e7eb;
+	border-radius: 6px;
+	padding: 0 10px;
+	height: 32px;
+}
+.santu-purchase-date-range input.santu-purchase-pill {
+	background: transparent;
+	border: none;
+	height: 30px;
+	padding: 0;
+}
+
+.santu-purchase-cal-icon { font-size: 14px; }
+.santu-purchase-date-to { font-size: 13px; color: #9ca3af; }
+
+input.santu-purchase-pill[type="date"] {
+	min-width: 108px;
+}
+
+.santu-purchase-filter-actions {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.santu-purchase-filter-link {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 2px;
+	border: none;
+	background: transparent;
+	font-size: 11px;
+	font-weight: 600;
+	color: #6b7280;
+	cursor: pointer;
+	padding: 2px 4px;
+	white-space: nowrap;
+}
+.santu-purchase-filter-link:hover {
+	color: var(--santu-brand, #e0393e);
+}
+.santu-purchase-filter-link-icon {
+	font-size: 18px;
+	line-height: 1;
+}
+
+.santu-purchase-th-filter {
+	margin-left: 4px;
+	opacity: 0.5;
+	font-size: 10px;
+}
+
+.santu-purchase-empty-plain {
+	padding: 48px 20px;
+	text-align: center;
+	color: #6b7280;
+	font-size: 15px;
+}
+
+/* ---------- Summary — triple cards (Purchase Bills) ---------- */
+.santu-purchase-summary-wrap {
+	margin-bottom: 10px;
+}
+
+/* Total Payable — moved here from Home (2026-08-18). Kept visually distinct
+   from the Paid/Unpaid/Total triple below: it is the overall figure across
+   every supplier, not scoped to whichever date range is selected there. */
+.santu-purchase-total-payable {
+	background: #f1f5f9;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	padding: 20px 24px;
+	margin-bottom: 16px;
+	box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+.santu-purchase-total-payable-label {
+	font-size: 14px;
+	font-weight: 600;
+	color: #7a2530;
+	margin-bottom: 4px;
+}
+.santu-purchase-total-payable-amount {
+	font-size: 32px;
+	font-weight: 700;
+	color: #a8323f;
+}
+.santu-purchase-total-payable-sub {
+	font-size: 13px;
+	color: #7a2530;
+	margin-top: 4px;
+}
+
+.santu-purchase-summary-triple {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.santu-purchase-sum-card {
+	flex: 1 1 200px;
+	min-width: 160px;
+	padding: 20px 24px;
+	border-radius: 12px;
+	border: 1px solid #e2e8f0;
+	box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.santu-purchase-sum-paid {
+	background: #d3f4e6;
+}
+.santu-purchase-sum-unpaid {
+	background: #dbeafe;
+}
+.santu-purchase-sum-total {
+	background: #fde6cc;
+}
+
+.santu-purchase-sum-label {
+	font-size: 14px;
+	font-weight: 600;
+	color: #374151;
+	margin-bottom: 4px;
+}
+.santu-purchase-sum-value {
+	font-size: 26px;
+	font-weight: 700;
+	color: #111827;
+}
+.santu-purchase-sum-op {
+	font-size: 26px;
+	font-weight: 700;
+	color: #374151;
+	flex-shrink: 0;
+}
+
+/* ---------- Summary — single card ---------- */
+.santu-purchase-summary-card {
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	padding: 16px 20px;
+	box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.santu-purchase-summary-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	margin-bottom: 2px;
+}
+
+.santu-purchase-summary-label {
+	font-size: 13px;
+	font-weight: 600;
+	color: #6b7280;
+}
+
+.santu-purchase-summary-badge {
+	font-size: 11px;
+	font-weight: 600;
+	padding: 2px 8px;
+	border-radius: 12px;
+}
+.santu-purchase-pct-up { color: #15803d; background: #ecfdf3; }
+.santu-purchase-pct-down { color: #b91c1c; background: #fef2f2; }
+
+.santu-purchase-summary-amount {
+	font-size: 26px;
+	font-weight: 700;
+	color: #111827;
+	margin-bottom: 4px;
+}
+
+.santu-purchase-summary-sub {
+	font-size: 13px;
+	color: #6b7280;
+}
+
+/* ---------- Return footer ---------- */
+.santu-purchase-summary-bottom {
+	margin-top: 10px;
+}
+
+.santu-purchase-return-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 14px;
+	background: #fafafa;
+	border: 1px solid #e8eaed;
+	border-radius: 8px;
+	font-size: 14px;
+}
+
+.santu-purchase-text-green { color: #15803d !important; }
+.santu-purchase-text-red { color: #b91c1c !important; }
+
+/* ---------- Transactions ---------- */
+.santu-purchase-txn-wrap {
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	overflow: hidden;
+	box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.santu-purchase-txn-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 14px;
+	border-bottom: 1px solid #f0f1f3;
+}
+
+.santu-purchase-txn-title {
+	font-size: 13px;
+	font-weight: 700;
+	letter-spacing: 0.04em;
+	color: #374151;
+}
+
+.santu-purchase-txn-toolbar {
+	display: flex;
+	gap: 4px;
+}
+
+.santu-purchase-icon-btn {
+	width: 30px;
+	height: 30px;
+	padding: 0;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	background: transparent;
+	font-size: 16px;
+	cursor: pointer;
+}
+.santu-purchase-icon-btn:hover {
+	background: #f3f4f6;
+	border-color: #e5e7eb;
+}
+
+.santu-purchase-txn-search-panel {
+	padding: 0 14px 10px;
+	border-bottom: 1px solid #f0f1f3;
+}
+.santu-purchase-txn-search-panel .form-control {
+	font-size: 14px;
+	height: 32px;
+	border-radius: 6px;
+}
+
+.santu-purchase-txn-table-wrap {
+	overflow-x: auto;
+}
+
+.santu-purchase-txn-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 14px;
+}
+
+.santu-purchase-txn-table thead th {
+	text-align: left;
+	padding: 12px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #64748b;
+	background: #f8fafc;
+	border-bottom: 1px solid #e2e8f0;
+	white-space: nowrap;
+}
+.santu-purchase-txn-table thead th.num { text-align: right; }
+
+.santu-purchase-txn-table tbody td {
+	padding: 7px 12px;
+	border-bottom: 1px solid #f3f4f6;
+	color: #374151;
+	vertical-align: middle;
+}
+.santu-purchase-txn-table tbody td.num { text-align: right; }
+
+.santu-purchase-txn-row { cursor: pointer; }
+.santu-purchase-txn-row:hover { background: #f9fafb; }
+
+.santu-purchase-row-btn {
+	width: 26px;
+	height: 26px;
+	padding: 0;
+	margin-left: 2px;
+	border: none;
+	border-radius: 4px;
+	background: transparent;
+	font-size: 14px;
+	cursor: pointer;
+	opacity: 0.7;
+}
+.santu-purchase-row-btn:hover {
+	background: #f3f4f6;
+	opacity: 1;
+}
+
+.santu-purchase-row-menu {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+.santu-purchase-row-menu-item {
+	display: block;
+	width: 100%;
+	text-align: left;
+	padding: 8px 12px;
+	border: none;
+	border-radius: 6px;
+	background: transparent;
+	font-size: 14px;
+	cursor: pointer;
+}
+.santu-purchase-row-menu-item:hover { background: #f3f4f6; }
+
+/* ---------- Empty states ---------- */
+.santu-purchase-loading {
+	padding: 24px;
+	text-align: center;
+	font-size: 14px;
+	color: #9ca3af;
+}
+
+.santu-purchase-empty {
+	text-align: center;
+	padding: 40px 20px;
+}
+
+.santu-purchase-empty-po {
+	padding: 56px 24px;
+}
+
+.santu-purchase-empty-icon {
+	font-size: 48px;
+	margin-bottom: 16px;
+	opacity: 0.85;
+}
+
+.santu-purchase-empty-title {
+	font-size: 16px;
+	font-weight: 700;
+	color: #374151;
+	margin-bottom: 6px;
+}
+
+.santu-purchase-empty-text {
+	font-size: 15px;
+	color: #6b7280;
+	max-width: 420px;
+	margin: 0 auto 20px;
+	line-height: 1.5;
+}
+
+.santu-purchase-empty-sub {
+	font-size: 14px;
+	color: #9ca3af;
+	margin-bottom: 16px;
+}
+
+.santu-purchase-empty-btn-po {
+	background: #3b82f6 !important;
+	border-color: #3b82f6 !important;
+	color: #fff !important;
+	font-weight: 600 !important;
+	padding: 10px 24px !important;
+	border-radius: 8px !important;
+}
+
+@media print {
+	.santu-purchase-filter-bar,
+	.santu-purchase-header-actions,
+	.santu-purchase-row-actions,
+	.santu-purchase-txn-toolbar,
+	#santu-app-sidebar,
+	.navbar { display: none !important; }
+	body.santu-fixed-sidebar .main-section {
+		margin-left: 0 !important;
+		width: 100% !important;
+	}
+}
+
+@media (max-width: 1366px) {
+	.santu-purchase { padding: 10px 14px 20px; }
+	input.santu-purchase-pill[type="date"] { min-width: 118px; }
+}
+
+@media (max-width: 900px) {
+	.santu-purchase-filter-actions { margin-left: 0; width: 100%; }
+	.santu-purchase-summary-triple { flex-direction: column; align-items: stretch; }
+	.santu-purchase-sum-op { display: none; }
+}

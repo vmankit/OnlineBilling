@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --app-bg: 248 250 252;
+    --font-stack: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    /* iPad home-screen app: respect the notch / home indicator */
+    --safe-top: env(safe-area-inset-top, 0px);
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+  }
+
+  body {
+    @apply bg-slate-50/70 text-slate-900 antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior: none;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11', 'tnum';
+  }
+
+  /* Form controls should strictly inherit the app's single unified typeface */
+  input,
+  button,
+  select,
+  textarea {
+    font-family: inherit;
+    font-size: 16px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full bg-slate-300/80 hover:bg-slate-400;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+@layer components {
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-200/80 bg-white shadow-card transition-shadow duration-200;
+  }
+
+  .card-hoverable {
+    @apply card hover:border-slate-300 hover:shadow-card-hover transition-all duration-200;
+  }
+
+  .focus-ring {
+    @apply outline-none ring-offset-2 focus-visible:ring-2 focus-visible:ring-brand-500/80 focus-visible:ring-offset-white;
+  }
+
+  .scroll-area {
+    @apply overflow-y-auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  body {
+    background: #fff;
+  }
+}

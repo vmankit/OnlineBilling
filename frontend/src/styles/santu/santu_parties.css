@@ -1,0 +1,942 @@
+/*
+ * Parties — pixel values taken from Vyapar compiled CSS
+ * parties-UIComponent_jsx_Parties_…-cfbc95.css (2026-08-15).
+ * Tokens from that file: VYAPAR_RED #ed1a3b, TEXT_BLACK #3f4155,
+ * BLUE #0075e8, GREEN #08bd7c, RED #f45972, LIGHT_BLUE #e4f2ff.
+ */
+.santu-parties-page {
+	display: flex;
+	flex-direction: column;
+	height: calc(100vh - 56px);
+	box-sizing: border-box;
+	background: #f1f5f9;
+}
+.santu-parties-page .santu-parties {
+	flex: 1 1 auto;
+	min-height: 0;
+	height: auto;
+	margin: 12px;
+	gap: 12px;
+}
+
+.santu-parties-page-header {
+	background: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 12px 16px;
+	flex-shrink: 0;
+}
+.santu-parties-page-title {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	position: relative;
+	cursor: pointer;
+	user-select: none;
+}
+.santu-parties-title-text {
+	color: #3f4155;
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 26px;
+}
+.santu-parties-title-chevron {
+	font-size: 12px;
+	color: #71748e;
+	line-height: 1;
+}
+.santu-parties-title-menu {
+	display: none;
+	position: absolute;
+	top: 32px;
+	left: 0;
+	background: #fff;
+	border-radius: 4px;
+	box-shadow: 0 5px 39px 9px rgba(63, 65, 85, 0.18);
+	z-index: 20;
+	padding: 4px 0;
+	min-width: 205px;
+}
+.santu-parties-title-menu.open { display: block; }
+.santu-parties-title-menu button {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	width: calc(100% - 16px);
+	margin: 4px 8px;
+	padding: 6px 12px;
+	border: none;
+	background: transparent;
+	color: #3f4155;
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 21px;
+	text-align: left;
+	cursor: pointer;
+	border-radius: 4px;
+}
+.santu-parties-title-menu button:hover,
+.santu-parties-title-menu button.is-active { font-weight: 500; background: #f3f4f8; }
+
+.santu-parties-header-right {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.santu-parties-header-sep {
+	background: #e2e8f0;
+	border-radius: 10px;
+	width: 1px;
+	height: 24px;
+}
+.santu-parties-add-btn {
+	display: inline-flex !important;
+	align-items: center !important;
+	gap: 6px !important;
+	height: 36px !important;
+	padding: 6px 18px !important;
+	line-height: 1 !important;
+	font-size: 14px !important;
+	font-weight: 600 !important;
+	border-radius: 8px !important;
+	background: #2563eb !important;
+	border-color: #2563eb !important;
+	color: #ffffff !important;
+	transition: all 0.2s !important;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !important;
+}
+.santu-parties-add-btn:hover {
+	background: #1d4ed8 !important;
+	border-color: #1d4ed8 !important;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06) !important;
+}
+
+.santu-parties {
+	display: flex;
+	align-items: stretch;
+	height: calc(100vh - 180px);
+}
+
+.santu-parties-list-panel {
+	flex: 0 0 350px;
+	width: 350px;
+	max-width: 380px;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background: #ffffff;
+	border-radius: 12px;
+	border: 1px solid #e2e8f0;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+	overflow: hidden;
+}
+
+.santu-parties-search-wrap {
+	display: flex;
+	align-items: center;
+	padding: 16px;
+}
+/* Sab / Customer / Mahajan picker above the party list (2026-09-04) —
+   one list holds both kinds now, this is what narrows it. */
+.santu-parties-typebar {
+	display: flex;
+	gap: 6px;
+	padding: 0 16px 12px;
+}
+.santu-parties-type {
+	flex: 1;
+	border: 1px solid #e2e8f0;
+	background: #f8fafc;
+	border-radius: 8px;
+	padding: 6px 4px;
+	font-size: 12.5px;
+	font-weight: 600;
+	color: #64748b;
+	cursor: pointer;
+	transition: all 0.15s;
+}
+.santu-parties-type:hover { background: #f1f5f9; color: #0f172a; }
+.santu-parties-type.is-active {
+	background: #eef2ff;
+	border-color: #6366f1;
+	color: #4338ca;
+}
+.santu-parties-search {
+	margin-bottom: 0;
+	height: 38px;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	padding: 0 12px 0 36px;
+	font-size: 14px;
+	color: #0f172a;
+	background: #f8fafc url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%2394a3b8' stroke-width='1.5'><circle cx='7' cy='7' r='5'/><path d='M11 11l3 3'/></svg>") no-repeat 12px center;
+	transition: all 0.2s;
+}
+.santu-parties-search:focus {
+	border-color: #3b82f6;
+	background: #ffffff;
+	box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+	outline: none;
+}
+
+.santu-parties-list-head {
+	display: flex;
+	justify-content: space-between;
+	padding: 0 16px 10px;
+	font-size: 13px;
+	font-weight: 600;
+	color: #64748b;
+}
+
+.santu-parties-list {
+	flex: 1 1 auto;
+	overflow-y: auto;
+	border: none;
+	border-radius: 0;
+}
+
+.santu-parties-row {
+	display: flex;
+	align-items: center;
+	padding: 10px 14px;
+	min-height: 60px;
+	border-bottom: 1px solid #f1f5f9;
+	cursor: pointer;
+	transition: background 0.15s;
+}
+.santu-parties-row.has-meta {
+	min-height: 64px;
+}
+.santu-parties-row-main {
+	min-width: 0;
+	flex: 1 1 auto;
+	overflow: hidden;
+}
+.santu-parties-row-meta {
+	display: block;
+	margin-top: 3px;
+	font-size: 11px;
+	line-height: 15px;
+	color: #64748b;
+	min-width: 0;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.santu-parties-row-meta span {
+	display: inline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 100%;
+}
+.santu-parties-row-active .santu-parties-row-meta { color: #475569; }
+.santu-parties-row:last-child { border-bottom: none; }
+.santu-parties-row:hover { background: #f8fafc; }
+.santu-parties-row-active {
+	background: #eff6ff !important;
+	border-left: 3px solid #3b82f6;
+	padding-left: 11px;
+}
+.santu-parties-row-name {
+	font-weight: 600;
+	font-size: 13.5px;
+	line-height: 18px;
+	color: #0f172a;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.santu-parties-row-amount {
+	font-size: 13px;
+	font-weight: 700;
+	line-height: 18px;
+	color: #71748e;
+	flex-shrink: 0;
+}
+.santu-parties-row-amount.santu-tone-success { color: #08bd7c; }
+.santu-parties-row-amount.santu-tone-danger { color: #f45972; }
+.santu-parties-row-amount.santu-tone-warning { color: #e08600; }
+
+.santu-parties-detail-panel {
+	flex: 1 1 auto;
+	height: 100%;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	min-width: 0;
+}
+
+.santu-parties-empty {
+	color: #64748b;
+	padding: 32px;
+	text-align: center;
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	flex: 1;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.santu-parties-landing {
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	margin: 0;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 60px;
+	min-height: 0;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+.santu-parties-landing-text {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 12px;
+	max-width: 560px;
+	padding: 0 24px;
+}
+.santu-parties-landing-text h2 {
+	color: #0f172a;
+	text-align: center;
+	font-size: 28px;
+	font-weight: 700;
+	line-height: 36px;
+	margin: 0;
+	letter-spacing: -0.5px;
+}
+.santu-parties-landing-text p {
+	color: #475569;
+	text-align: center;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 24px;
+	margin: 0;
+}
+.santu-parties-landing .santu-parties-add-btn {
+	position: relative;
+	overflow: hidden;
+	height: 44px !important;
+	padding: 8px 24px !important;
+	font-size: 15px !important;
+	border-radius: 8px !important;
+}
+
+.santu-parties-list-empty {
+	padding: 24px 16px;
+	text-align: center;
+	color: #3f4155;
+}
+.santu-parties-list-empty b {
+	display: block;
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 4px;
+}
+.santu-parties-list-empty span {
+	font-size: 13px;
+	color: #71748e;
+}
+
+.santu-parties-card {
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	padding: 20px;
+	flex-shrink: 0;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+.santu-parties-txn-card {
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	padding: 0;
+	flex: 1 1 auto;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.santu-parties-detail-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 0;
+}
+.santu-parties-detail-name {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: #0f172a;
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 24px;
+	margin: auto 0;
+	letter-spacing: -0.3px;
+}
+.santu-parties-edit-btn,
+.santu-parties-delete-btn {
+	border: none;
+	background: #f1f5f9;
+	border-radius: 6px;
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+	padding: 6px;
+	color: #3b82f6;
+	transition: all 0.2s;
+}
+.santu-parties-edit-btn:hover,
+.santu-parties-delete-btn:hover { background: #e2e8f0; color: #2563eb; }
+.santu-parties-edit-btn svg,
+.santu-parties-delete-btn svg { width: 18px; height: 18px; }
+
+.santu-parties-detail-icons {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	flex-shrink: 0;
+}
+.santu-parties-icon-btn {
+	width: 20px;
+	height: 20px;
+	border: none;
+	background: transparent;
+	padding: 0;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: #656672;
+}
+.santu-parties-icon-btn:hover { opacity: 0.75; }
+.santu-parties-whatsapp-btn { color: #08bd7c; }
+.santu-parties-icon-sep {
+	background: rgba(0, 0, 0, 0.06);
+	border-radius: 10px;
+	width: 1px;
+	height: 24px;
+}
+
+.santu-parties-detail-info {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: 16px 32px;
+	margin-top: 16px;
+}
+.santu-parties-detail-info-col {
+	display: inline-flex;
+	flex-direction: column;
+	max-width: calc(100% - 8px);
+}
+.santu-parties-detail-info-label {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	text-align: left;
+	color: #64748b;
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 18px;
+	margin-bottom: 2px;
+}
+.santu-parties-detail-icon { flex-shrink: 0; }
+.santu-parties-detail-info-value {
+	color: #0f172a;
+	text-align: left;
+	font-size: 15px;
+	font-weight: 500;
+	line-height: 22px;
+	max-width: 320px;
+}
+
+.santu-parties-txn-head {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	height: 64px;
+	padding: 16px 20px;
+	flex-shrink: 0;
+	border-bottom: 1px solid #e2e8f0;
+}
+.santu-parties-detail-section-title {
+	color: #0f172a;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 18px;
+	margin: 0;
+	overflow: hidden;
+}
+.santu-parties-txn-icons {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+.santu-parties-khata-btn {
+	border: 1px solid #7c3aed !important;
+	background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #d946ef 100%) !important;
+	color: #ffffff !important;
+	font-size: 13px;
+	font-weight: 700 !important;
+	padding: 8px 16px;
+	border-radius: 8px;
+	cursor: pointer;
+	white-space: nowrap;
+	box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25) !important;
+	transition: all 0.25s ease-in-out;
+	letter-spacing: 0.3px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+.santu-parties-khata-btn:hover {
+	background: linear-gradient(135deg, #4338ca 0%, #6d28d9 50%, #c026d3 100%) !important;
+	box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4) !important;
+	transform: translateY(-2px);
+	border-color: #8b5cf6 !important;
+	color: #ffffff !important;
+}
+.santu-parties-khata-btn:active {
+	transform: translateY(0);
+	box-shadow: 0 2px 6px rgba(124, 58, 237, 0.3) !important;
+}
+
+.santu-khata-word-cosmic {
+	background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+	font-weight: 700;
+}
+
+
+/* ---- Customer khata dialog ---- */
+.santu-khata-table-wrap {
+	max-height: 55vh;
+	overflow-y: auto;
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+}
+.santu-khata-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 13px;
+}
+.santu-khata-table th,
+.santu-khata-table td {
+	padding: 10px 12px;
+	border-bottom: 1px solid #e2e8f0;
+	text-align: left;
+	white-space: nowrap;
+}
+.santu-khata-table th {
+	position: sticky;
+	top: 0;
+	background: #f8fafc;
+	color: #64748b;
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	z-index: 1;
+}
+.santu-khata-items {
+	white-space: normal;
+	max-width: 260px;
+	color: #475569;
+	font-size: 12px;
+}
+/* Name, then "qty x rate", then that line's amount — three columns that
+   line up so they can be read straight down (2026-09-04 direct request:
+   "uske samne individual ka price" / "individual item ka bill dikhna
+   chahiye"). Matches the printed and WhatsApped copy exactly. */
+.santu-khata-item-line {
+	padding: 1px 0;
+	display: flex;
+	gap: 10px;
+	align-items: baseline;
+}
+/* Long names wrap rather than run into the qty x rate column next to them
+   — without this "MALHOTRA COUNCIL BOX" collided with "20 x 65.00" and
+   read as one word. A khata is a formal statement, so the name wraps in
+   full instead of being cut with an ellipsis. */
+.santu-khata-item-name {
+	flex: 1;
+	min-width: 0;
+	/* The .santu-khata-items cell around this sets white-space: nowrap, and
+	   overflow-wrap cannot break text that is told never to wrap — so the
+	   name has to opt back in explicitly. The rate/amount columns keep
+	   nowrap on purpose: a number must never split across lines. */
+	white-space: normal;
+	overflow-wrap: anywhere;
+}
+.santu-khata-item-calc {
+	white-space: nowrap;
+	text-align: right;
+	min-width: 78px;
+	color: #64748b;
+}
+.santu-khata-item-amt {
+	white-space: nowrap;
+	text-align: right;
+	min-width: 62px;
+	color: #0f172a;
+	font-weight: 600;
+}
+.santu-khata-num { text-align: right; font-weight: 500;}
+.santu-khata-balance { font-weight: 700; color: #0f172a; }
+.santu-khata-opening td,
+.santu-khata-closing td {
+	background: #f8fafc;
+	font-weight: 600;
+	color: #0f172a;
+}
+.santu-khata-empty {
+	text-align: center;
+	padding: 30px;
+	color: #64748b;
+}
+.santu-khata-loading {
+	text-align: center;
+	padding: 40px;
+	color: #64748b;
+}
+.santu-parties-txn-search {
+	height: 36px;
+	border: 1px solid #e2e8f0;
+	border-radius: 6px;
+	padding: 0 12px;
+	font-size: 13px;
+	width: 200px;
+	display: none;
+	transition: all 0.2s;
+}
+.santu-parties-txn-search:focus {
+	border-color: #3b82f6;
+	outline: none;
+	box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+.santu-parties-txn-search.open { display: block; }
+.santu-parties-bills {
+	flex: 1;
+	overflow: auto;
+	padding-bottom: 4px;
+}
+
+.santu-parties-table { width: 100%; border-collapse: collapse; }
+.santu-parties-table th {
+	text-align: left;
+	font-size: 13px;
+	font-weight: 600;
+	text-transform: none;
+	letter-spacing: 0;
+	color: #64748b;
+	border-bottom: 1px solid #e2e8f0;
+	padding: 12px 16px;
+	background: #f8fafc;
+	position: sticky;
+	top: 0;
+	z-index: 10;
+}
+.santu-parties-table th.num { text-align: right; }
+.santu-parties-bill-row td {
+	padding: 0 16px;
+	height: 56px;
+	border-bottom: 1px solid #e2e8f0;
+	font-size: 14px;
+	line-height: 56px;
+	color: #334155;
+	font-weight: 500;
+}
+.santu-parties-bill-row td.num { text-align: right; font-weight: 600; color: #0f172a; }
+.santu-parties-bill-row { cursor: pointer; transition: background 0.15s; }
+.santu-parties-bill-row:hover { background: #f8fafc; }
+
+/* Add Party dialog — AddEditPartyDialog (max-width 352px, radius 8px) */
+.santu-parties-add-dialog .modal-dialog { max-width: 352px; }
+/* GSTIN verify result (2026-09-03 direct request: "gstin ko verify karne
+   ka option laa do") */
+.santu-gstin-status {
+	margin-top: -6px;
+	margin-bottom: 10px;
+	padding: 6px 10px;
+	border-radius: 6px;
+	font-size: 12.5px;
+	line-height: 1.4;
+}
+.santu-gstin-status.is-ok { background: #ecfdf5; color: #047857; }
+.santu-gstin-status.is-bad { background: #fef2f2; color: #b91c1c; }
+.santu-parties-add-dialog .modal-content { border-radius: 12px; overflow: hidden; box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); }
+.santu-parties-add-dialog .modal-header {
+	border-bottom: 1px solid #e2e8f0;
+	padding: 20px 24px;
+	background: #f8fafc;
+}
+.santu-parties-add-dialog .modal-title {
+	font-size: 18px;
+	font-weight: 600;
+	color: #0f172a;
+}
+.santu-parties-add-dialog .modal-body { padding: 24px; }
+.santu-parties-add-dialog .modal-footer { padding: 20px 24px; border-top: 1px solid #e2e8f0; background: #f8fafc; }
+.santu-parties-add-dialog .btn-primary {
+	background: #2563eb !important;
+	border-color: #2563eb !important;
+	border-radius: 8px;
+	padding: 8px 16px;
+	font-weight: 500;
+}
+.santu-parties-add-dialog .btn-primary:hover {
+	background: #1d4ed8 !important;
+	border-color: #1d4ed8 !important;
+}
+
+@media (max-width: 800px) {
+	.santu-parties-page { height: auto; }
+	.santu-parties { flex-direction: column; height: auto; }
+	.santu-parties-list-panel { flex: 1 1 auto; width: 100%; max-width: none; height: 400px; }
+	.santu-parties-detail-panel { width: 100%; height: auto; }
+}
+
+/* ---------- Cash & Bank (reuses list/detail layout) ---------- */
+.santu-cashbank-total-card {
+	background: #eff6ff;
+	border-radius: 8px;
+	padding: 20px;
+	margin: 16px;
+	border: 1px solid #bfdbfe;
+}
+.santu-cashbank-total-label {
+	font-size: 13px;
+	color: #64748b;
+	font-weight: 500;
+}
+.santu-cashbank-total-amount {
+	font: 700 28px/1.3 inherit;
+	color: #1d4ed8;
+	letter-spacing: -0.5px;
+}
+.santu-cashbank-type-pill {
+	display: inline-block;
+	margin-left: 10px;
+	padding: 4px 10px;
+	border-radius: 999px;
+	background: #ffffff;
+	color: #475569;
+	font-size: 12px;
+	font-weight: 600;
+	vertical-align: middle;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Balance stated in words in the detail panel. The list column carries the
+   same fact in colour alone (Vyapar's own convention, kept for the match) —
+   this is where it gets said out loud, for someone who hasn't been taught
+   that green means money coming in. */
+.santu-parties-balance {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	margin-top: 10px;
+	padding: 12px 16px;
+	border-radius: 10px;
+	font-size: 14px;
+	transition: all 0.2s;
+}
+.santu-parties-balance-main {
+	display: flex;
+	align-items: baseline;
+	gap: 10px;
+}
+.santu-parties-balance-in { background: #fef2f2; border: 1px solid #fecaca; }
+.santu-parties-balance-out { background: #fffbeb; border: 1px solid #fde68a; }
+.santu-parties-balance-clear {
+	background: #f8fafc;
+	border: 1px solid #e2e8f0;
+	color: #64748b;
+}
+.santu-parties-balance-label { font-weight: 600; color: #334155; }
+.santu-parties-balance-in .santu-parties-balance-amount { color: #e11d48; font-weight: 700; font-size: 18px; letter-spacing: -0.5px; }
+.santu-parties-balance-out .santu-parties-balance-amount { color: #d97706; font-weight: 700; font-size: 18px; letter-spacing: -0.5px; }
+
+.santu-parties-send-reminder-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: #10b981;
+	color: #ffffff !important;
+	border: none;
+	border-radius: 8px;
+	padding: 8px 16px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+	transition: background 0.15s ease, transform 0.08s ease;
+	white-space: nowrap;
+}
+.santu-parties-send-reminder-btn:hover {
+	background: #059669;
+	color: #ffffff !important;
+}
+.santu-parties-send-reminder-btn:active {
+	transform: scale(0.97);
+}
+
+/* Payment In / Payment Out — sits next to Send Reminder when there is a
+   balance, and alone (still visible) when the party is settled, so
+   collecting an advance from a paid-up customer needs no detour through a
+   different screen (2026-09-06). Neutral, not green: this button records
+   money moving in EITHER direction depending on party_type, unlike Send
+   Reminder which only ever chases what is owed. */
+.santu-parties-balance-actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-shrink: 0;
+}
+.santu-parties-payment-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	background: #ffffff;
+	color: #1d4ed8 !important;
+	border: 1px solid #bfdbfe;
+	border-radius: 8px;
+	padding: 8px 16px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	white-space: nowrap;
+	transition: background 0.15s ease, transform 0.08s ease;
+}
+.santu-parties-payment-btn:hover {
+	background: #eff6ff;
+}
+.santu-parties-payment-btn:active {
+	transform: scale(0.97);
+}
+.santu-parties-balance-clear .santu-parties-payment-btn {
+	margin-left: auto;
+}
+
+/* Party actions (Edit / Delete) behind a kebab menu — a bare red trash icon
+   beside the party name read as a hazard on every view. */
+.santu-parties-more { position: relative; display: inline-flex; margin-left: 4px; }
+.santu-parties-more-btn {
+	border: none;
+	background: transparent;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	padding: 0;
+	width: 24px;
+	height: 24px;
+	border-radius: 6px;
+}
+.santu-parties-more-btn:hover { background: #eef1f6; }
+.santu-parties-more-menu {
+	display: none;
+	position: absolute;
+	top: calc(100% + 4px);
+	left: 0;
+	min-width: 150px;
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+	padding: 8px;
+	z-index: 30;
+}
+.santu-parties-more-menu.open { display: block; }
+.santu-parties-more-menu .santu-parties-more-item {
+	display: block;
+	width: 100%;
+	text-align: left;
+	border: none;
+	background: transparent;
+	padding: 7px 10px;
+	border-radius: 6px;
+	font-size: 13px;
+	line-height: 18px;
+	color: #3f4155;
+	cursor: pointer;
+	opacity: 1;
+}
+.santu-parties-more-menu .santu-parties-more-item:hover { background: #f8fafc; opacity: 1; }
+.santu-parties-more-menu .santu-parties-more-danger { color: #ef4444; }
+.santu-parties-more-menu .santu-parties-more-danger:hover { background: #fef2f2; }
+
+/* "Kab kitna dena/lena hai" — the payment schedule above the running
+   khata (2026-09-04 request). Deliberately a distinct block, not another
+   khata row: it answers a different question (what is still to come, by
+   when) than the ledger below it (what already happened). */
+.santu-khata-due {
+	border: 1px solid #e2e8f0;
+	border-radius: 8px;
+	margin-bottom: 14px;
+	overflow: hidden;
+	background: #fff;
+}
+.santu-khata-due-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px 12px;
+	background: #f8fafc;
+	border-bottom: 1px solid #e2e8f0;
+	font-weight: 600;
+	font-size: 13px;
+}
+.santu-khata-due-head b {
+	font-size: 15px;
+}
+.santu-khata-due-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 12px;
+}
+.santu-khata-due-table th,
+.santu-khata-due-table td {
+	padding: 6px 12px;
+	border-bottom: 1px solid #f1f5f9;
+	text-align: left;
+}
+.santu-khata-due-table th {
+	color: #64748b;
+	font-weight: 600;
+}
+.santu-khata-due-table .santu-khata-num {
+	text-align: right;
+}
+.santu-khata-due-table tbody tr:last-child td {
+	border-bottom: 0;
+}
+.santu-khata-due-late td {
+	background: #fef2f2;
+}
+.santu-khata-due-tag {
+	color: #b91c1c;
+	font-weight: 600;
+	font-size: 11px;
+}
+.santu-khata-due-foot {
+	padding: 7px 12px;
+	border-top: 1px solid #e2e8f0;
+	background: #fef2f2;
+	color: #b91c1c;
+	font-size: 12px;
+}
